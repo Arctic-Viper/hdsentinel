@@ -6,12 +6,12 @@ COPY hdsentinel.sh .
 
 # Install any needed packages and do needed file system modifcations
 RUN apk add --no-cache wget \
-	&& wget https://www.hdsentinel.com/hdslin/hdsentinel-017-x64.gz \
-	&& gunzip hdsentinel-017-x64.gz \
+	&& wget https://www.hdsentinel.com/hdslin/hdsentinel-020b-x64.zip \
+	&& gunzip hdsentinel-020b-x64.zip \
 	&& apk del wget \
-	&& chmod 0755 hdsentinel-017-x64 \
+	&& chmod 0755 hdsentinel-020b-x64 \
 	&& mkdir /etc/hdsentinel\
-    	&& mv hdsentinel-017-x64 /bin/hdsentinel \
+    	&& mv hdsentinel-020b-x64 /bin/hdsentinel \
 	&& chmod +x hdsentinel.sh \
 	&& echo "*/10       *       *       *       *       hdsentinel -r /etc/hdsentinel/hdsreport.html -html" >> /var/spool/cron/crontabs/root
 
