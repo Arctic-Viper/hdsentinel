@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  hdsentinel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hdsentinel
+    restart: unless-stopped
+    privileged: true
+    environment:
+      - LANG=C.UTF-8
+    volumes:
+      - ./config:/etc/hdsentinel
+
+# THIS IS ONLY NEEDED IF YOU INTEND ON MONITORING THIS MACHINE FROM ANOTHER LOCAL MACHINE VIA `NAS Disk Monitoring`
+#  caddy:
+#    image: caddy:latest
+#    container_name: caddy
+#    restart: unless-stopped
+#    command: ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile", "--watch"]
+#    ports:
+#      - 80:80
+#      - 443:443
+#    volumes:
+#      - ./Caddyfile:/etc/caddy/Caddyfile
+#      - ./config:/hdsentinel
+#      - caddy:/data
+#      - caddy:/config
