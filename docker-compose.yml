@@ -11,7 +11,7 @@ services:
     environment:
       - LANG=C.UTF-8
     volumes:
-      - ./config:/etc/hdsentinel
+      - ./html:/etc/hdsentinel
 
   caddy:
     image: caddy:latest
@@ -23,6 +23,6 @@ services:
       - 443:443
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./config:/hdsentinel
+      - ./html:/hdsentinel
       - caddy:/data
       - caddy:/config
